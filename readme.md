@@ -101,7 +101,11 @@ You should add file and build at first anyway to make the following settings eas
 * Debugger tab
 	* GDB debugger = /home/myname/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gdb
 * Click "Debug"
+
 ### Run or Debug
 * Debug -> Hello Debug  # Do not choose "Local C/C++ Application"
 * Debug perspective will open and break at the first line
 * You can also "Run" the application
+
+### Note
+* Do not forget to STOP debugging when you finish or before you start next debugging. Otherwise, you will fail to upload binary next time 
