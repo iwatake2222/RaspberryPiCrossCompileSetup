@@ -95,7 +95,9 @@ You should add file and build at first anyway to make the following settings eas
 	* C/C++ Application = Debug/hello 	# you will be able to "Search Project" after you add and build the project
 	* Connection = 192.168.0.144	# the connection you created ealier
 	* Remote Absolute File Path for C/C++ Application = /home/pi/tmp/hello
-	* Commands to execute before application = chmod a+x /home/pi/tmp/hello
+	* Commands to execute before application = 
+	* 	sudo -i
+	* 	chmod a+x /home/pi/tmp/hello
 * Debugger tab
 	* GDB debugger = /home/myname/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gdb
 * Click "Debug"
