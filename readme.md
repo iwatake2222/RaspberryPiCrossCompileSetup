@@ -4,7 +4,7 @@
 	* Remote debug the program you created
 * Environment:
 	* Target: Raspberry Pi 2 Model B (Raspbian)
-	* Host: Ubuntu 14.04 (64-bit), Eclipse
+	* Host: Ubuntu 14.04 (64-bit), Eclipse / NetBeans
 	* Language: Userland C/C++
 
 ## Note
@@ -49,7 +49,7 @@ pi$> exit
 ```
 
 
-## Debug on Eclipse
+## Compile and Debug on Eclipse
 ### Prepare workspace on "Raspberry Pi"
 ```
 pi$> mkdir tmp
@@ -109,3 +109,58 @@ You should add file and build at first anyway to make the following settings eas
 
 ### Note
 * Do not forget to STOP debugging when you finish or before you start next debugging. Otherwise, you will fail to upload binary next time 
+
+
+
+## Compile and Debug on NetBeans
+### Download NetBeand C/C++ Bundle or All
+https://netbeans.org/downloads/index.html
+
+
+### Setup NetBeans Project
+### Create New Project
+* File -> New Project
+	* C/C++, C/C++ Application
+	* Build Host = localhost
+	* Tool Collection
+		* Default (GNU (GNU))	# for the first time. you have no choice
+		* GNU_Raspberry (GNU)	# after you created new tool collection(see the following)
+
+### Setup Tool Collection (maybe once only)
+* Project Explorer -> Projects -> <Project Name> - right click -> Properties
+	* Build -> Tool Collection -> ...
+	* Add
+		* Name = GNU_Raspberry (as you want)
+		* Base Directory = /home/<name>/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
+		* Tool collection Family = GNU
+		* C Compiler = /home/<name>/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
+		* C++ Compiler = /home/<name>/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-g++
+		* Assembler = /home/<name>/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-as
+		* Debugger Command = /home/<name>/dev/raspberry/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gdb
+		* Make and QMake = use default
+	* [Optional] set it as default
+
+### Add Source file and build
+```
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int main(int argc, char** argv) {
+    cout << "Hello" << endl;
+    return 0;
+}
+```
+
+### Build on Host and Run on Raspberry Pi
+* Run -> Build Project
+* upload executable file
+	* $PC$ > cd raspberry/NetBeansProjects/<Pj name>/dist/Debug/GNU_Raspberry-Linux
+	* $PC$ > scp hello pi@192.168.0.144:hello
+* run on Raspberry Pi
+	* $PI$ > ./hello
+
+### Remote Debug
+...
+
+
