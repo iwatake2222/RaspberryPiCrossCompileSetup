@@ -181,7 +181,6 @@ not working now
 * Use toolchains on the target board, so it is not cross compile. It's just a remote development
 * Problem
 	* It is slow
-	* Console out doesn't appear when debugging
 
 ### Create gdb wrapper for debugging as root
 * $PI$ > mkdir bin
@@ -248,6 +247,6 @@ int main(int argc, char** argv) {
 ### Remote Debug
 * just click Debug
 	* To show debug tools, Window -> Debugging
-* print/cout output are not shown (why?)
+* print/cout output are not in Debugger Console (Window -> Debugging -> Debugger Console)
 
 
